@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    	<meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="The portfolio of Jessie Contour." />
+    	<title>jessie is here</title>
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/hamburgers.css">
+        <link rel='shortcut icon' href='images/favicon.ico' type='image/x-icon'/ >
+
+        <script src="js/jquery.min.js"></script>
+        <script src="js/handlebars.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="js/projects.js"></script>
+        <script src="js/script.js"></script>
+    </head>
+    <body>
+
+         <!-- NAVIGATION -->
+        
+        <div class="col-lg-9 col-lg-offset-1">
+            <!-- NAME HEADER -->
+            <div class="row">
+                    <div class="col-med-12">
+                        <div id="name"> 
+                            <h2>jessie contour </h2>
+                            <p> creative technologist, nyc </p>
+                        </div>
+                    </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-12 col-xs-12">
+                    
+                    <div class="col-md-12">     
+                        <div id="proj-list-container">
+                            <div id="project-list">  </div>
+                        </div>
+
+                        <div id="etc-list-container">
+                            <div id="etc-list">  </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-8 col-sm-12 col-xs-12">
+                    <div id="project"> </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div id="footer" class="col-md-12 col-sm-12 col-xs-12">
+                    <div id="contact">
+                        <ul>
+                            <li id="about"> About </li>
+                            <li id="email"> Email </li>
+                            <li> <a href="http://www.instagram.com/contourcontrast" target="_blank">Instagram</a> </li>
+                            <li> <a href="http://www.twitter.com/contourcontrast" target="_blank"> Twitter </a> </li>
+                            <li> <a href="https://www.linkedin.com/in/jessiecontour/" target="_blank"> LinkedIn </a> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- TEMPLATES -->
+
+        <script id="nav-template" type="text/x-handlebars-template">
+            <p class="info">filter by type</p>
+            {{#each types}}
+                <div class="type" data-type="{{this}}">
+                    {{this}}
+                </div>
+            {{/each}}
+        </script>
+
+        <script id="project-list-template" type="text/x-handlebars-template">
+            <p> featured projects </p>
+            <div id="main-list">
+                {{#each main}}
+                    <div class="project-nav" data-id="{{@index}}">
+                        {{title}}
+                        <div class="summary"> 
+                            {{summary}}
+                        </div>
+                    </div>
+                    
+                {{/each}}
+            </div>
+        </script>
+
+        <script id="etc-list-template" type="text/x-handlebars-template">
+            <p> experiments </p>
+            <div id="experiment-list">
+                {{#each etc}}
+                    <div class="etc-nav" data-id="{{@index}}">
+                        {{title}}
+                        <div class="summary"> 
+                        {{summary}}
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        </script>
+
+        <script id="project-template" type="text/x-handlebars-template">
+ 
+            <div class="project-container" data-id="{{@index}}">
+                <div class="title {{type}}">
+                    <p>{{title}}</p>
+                </div>
+                
+                <div class="description">
+                    {{#each description}}
+                        <p>{{this}}</p>
+                    {{/each}}
+
+                    {{#if haslink}}
+                        {{#each links}}
+                            Link : <a href="{{this.link}}"> {{this.text}} </a> <br>
+                        {{/each}}
+                    {{/if}}
+                </div>
+
+                {{#each vimeo}}
+                <iframe class="video col-md-12 col-xs-12" src="{{this}}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                {{/each}}
+
+                {{#each youtube}}
+                <iframe class="video col-md-12 col-xs-12" src="{{this}}" frameborder="0" allowfullscreen></iframe>
+                {{/each}}
+
+                {{#each images}}
+                    <img class="col-md-12 col-xs-12" src="{{this}}" />
+                {{/each}} 
+                
+                
+            </div>
+
+        </script>
+
+
+    </body>
+</html>
